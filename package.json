@@ -6,7 +6,8 @@
   "description": "00-lab experiment scaffold",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "og": "node scripts/generate-og.mjs",
+    "build": "tsc --noEmit && node scripts/generate-og.mjs && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
@@ -16,10 +17,12 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^22.10.2",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
+    "satori": "^0.12.2",
     "typescript": "^5.7.2",
     "vite": "^6.0.5",
     "vitest": "^3.2.4"

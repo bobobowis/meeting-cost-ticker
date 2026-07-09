@@ -41,15 +41,27 @@ export function costAfter(elapsedSeconds: number, ratePerSecond: number): number
   return elapsedSeconds * ratePerSecond;
 }
 
-/** Format a dollar amount as USD currency, always two decimals. */
-export function formatUSD(amount: number): string {
+/**
+ * Format an amount as currency with a given locale, always two decimals.
+ * Locale drives grouping/decimal separators (e.g. es-ES → "1284,60 €").
+ */
+export function formatMoney(
+  amount: number,
+  currency: string = "USD",
+  locale: string = "en-US",
+): string {
   const safe = Number.isFinite(amount) ? amount : 0;
-  return safe.toLocaleString("en-US", {
+  return safe.toLocaleString(locale, {
     style: "currency",
-    currency: "USD",
+    currency,
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
+}
+
+/** Format a dollar amount as USD currency, always two decimals. */
+export function formatUSD(amount: number): string {
+  return formatMoney(amount, "USD", "en-US");
 }
 
 /** Format elapsed seconds as H:MM:SS (hours omitted when zero). */

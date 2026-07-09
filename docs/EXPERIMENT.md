@@ -63,14 +63,17 @@ advance the next idea (per the pick order, **Timezone Slot Finder #2**).
 - ✅ **Tracked CTA fires** — the share button calls `track("share_click", …)`
   before invoking the Web Share / clipboard fallback; verified live against the
   EU Umami dashboard in LAB-7. (Event is named `share_click`, not `cta_click`.)
-- ⚠️ **Conversion gap — no `og:image`.** Link previews on HN / X / Reddit / PH
-  render with no thumbnail, which measurably lowers click-through. Fix needs a
-  1200×630 raster OG card (a screenshot/branded card). No image tooling in the
-  build env and no browser capability here → **requested as an asset from QA /
-  Lab Director** (see LAB-9 comment). Once the PNG exists: add
-  `<meta property="og:image">` + switch `twitter:card` to `summary_large_image`.
-- ℹ️ **Screenshot/gif for posts** — same blocker (needs browser capture);
-  requested alongside the OG card.
+- ✅ **`og:image` — CLOSED (Path B, board pick 2026-07-09).** Programmatic
+  1200×630 OG card generated at build by `scripts/generate-og.mjs`
+  (satori → resvg, pure JS+WASM, no headless browser → runs in CI). Wired
+  `og:image` + `twitter:card=summary_large_image` in `index.html`. The generator
+  + vendored fonts are **reusable studio infra** — copy the script and edit the
+  `CARD` config for any future experiment. Doubles as the post thumbnail/gif.
+- ✅ **Localization EN/ES + EUR/USD** — UI, share text, and regional
+  working-hours presets (US 2,080; Spain 40h 1,826 / 37.5h 1,690 / 35h 1,575 per
+  board feedback) in `src/lib/i18n.ts`. Language + currency toggles in the top bar.
+- ✅ **Social share buttons** — X, LinkedIn, WhatsApp, Copy; each fires
+  `track("share_click", { channel, … })` so per-channel conversion is measurable.
 
 **Distribution kit — ready-to-post copy.** Actual posting requires studio social
 accounts (no HN / Reddit / X / Product Hunt credentials in this environment;

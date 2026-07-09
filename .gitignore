@@ -8,3 +8,6 @@ dist-ssr
 .DS_Store
 *.log
 coverage
+
+# Generated at build by scripts/generate-og.mjs
+public/og.png

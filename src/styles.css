@@ -35,6 +35,37 @@ body {
   gap: 1.75rem;
 }
 
+/* --- Top bar: language + currency segmented controls --- */
+.topbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-bottom: -0.75rem;
+}
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--bg-2);
+}
+.seg-btn {
+  padding: 0.35rem 0.7rem;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.seg-btn.on {
+  background: var(--ember);
+  color: #1a0f05;
+}
+.seg-btn:not(.on):hover {
+  color: var(--ink);
+}
+
 .head h1 {
   margin: 0;
   font-size: clamp(1.35rem, 4vw, 1.75rem);
@@ -176,4 +207,62 @@ body {
 }
 .foot a {
   color: var(--ember-2);
+}
+
+/* --- Share row --- */
+.share {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.share-label {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.share-btns {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.sbtn {
+  min-width: 44px;
+  height: 40px;
+  padding: 0 0.8rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.06s ease;
+}
+.sbtn:hover {
+  border-color: #3a3646;
+}
+.sbtn:active {
+  transform: translateY(1px);
+}
+.sbtn.wa {
+  color: #25d366;
+}
+.sbtn.in {
+  color: #4aa3df;
+  text-transform: lowercase;
+}
+
+/* --- Select (region presets) --- */
+.field select {
+  padding: 0.7rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  color: var(--ink);
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+.field select:focus {
+  outline: 2px solid var(--ember);
+  outline-offset: 1px;
 }
