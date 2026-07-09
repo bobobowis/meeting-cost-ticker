@@ -74,6 +74,11 @@ advance the next idea (per the pick order, **Timezone Slot Finder #2**).
   board feedback) in `src/lib/i18n.ts`. Language + currency toggles in the top bar.
 - ✅ **Social share buttons** — X, LinkedIn, WhatsApp, Copy; each fires
   `track("share_click", { channel, … })` so per-channel conversion is measurable.
+- ✅ **Deployed live (2026-07-09)** — PR #1 (`lab-9/localize-social-og`) squash-merged
+  to `main` (`4efeab57`); Pages Deploy succeeded. Verified live:
+  `https://bobobowis.github.io/meeting-cost-ticker/og.png` → **HTTP 200** (62 KB),
+  `og:image` = absolute `.../og.png`, `twitter:card=summary_large_image`. All Path B
+  + i18n + presets + social-button work is now in production.
 
 **Distribution kit — ready-to-post copy.** Actual posting requires studio social
 accounts (no HN / Reddit / X / Product Hunt credentials in this environment;
