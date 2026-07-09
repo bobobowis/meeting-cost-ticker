@@ -3,6 +3,7 @@ import {
   perSecondCost,
   costAfter,
   formatUSD,
+  formatMoney,
   formatElapsed,
   DEFAULT_HOURS_PER_YEAR,
 } from "./cost";
@@ -51,6 +52,21 @@ describe("formatUSD", () => {
   it("falls back to $0.00 for non-finite", () => {
     expect(formatUSD(NaN)).toBe("$0.00");
     expect(formatUSD(Infinity)).toBe("$0.00");
+  });
+});
+
+describe("formatMoney", () => {
+  it("defaults to USD / en-US", () => {
+    expect(formatMoney(1234.5)).toBe("$1,234.50");
+  });
+  it("formats EUR in es-ES with comma decimals and euro sign", () => {
+    const out = formatMoney(1234.5, "EUR", "es-ES");
+    expect(out).toContain("€");
+    expect(out).toContain(",50"); // decimal comma
+    expect(out).not.toBe(formatMoney(1234.5, "USD", "en-US"));
+  });
+  it("falls back to 0.00 for non-finite", () => {
+    expect(formatMoney(NaN, "EUR", "es-ES")).toContain("0,00");
   });
 });
 
