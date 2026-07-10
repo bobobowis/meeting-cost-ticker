@@ -80,17 +80,17 @@ advance the next idea (per the pick order, **Timezone Slot Finder #2**).
   `og:image` = absolute `.../og.png`, `twitter:card=summary_large_image`. All Path B
   + i18n + presets + social-button work is now in production.
 
-**Distribution kit — ready-to-post copy.** Actual posting requires studio social
-accounts (no HN / Reddit / X / Product Hunt credentials in this environment;
-only GitHub `bobobowis`). Drafts below are approved-shape and ready for the Lab
-Director / Growth to post. Log the live link + date in the table as each goes up.
+**Distribution results — LIVE (2026-07-10).** ≥2-channel bar met: **X + Product
+Hunt** posted. HN + Reddit blocked by new-account gates (not a copy problem —
+`bobobowis` has no karma/tenure yet); re-attempt after the account builds
+standing, or use an established account.
 
 | Channel | Status | Link | Posted (date) |
 |---|---|---|---|
-| Hacker News — Show HN | drafted, ready to post | _(paste)_ | _(paste)_ |
-| Reddit — r/SideProject | drafted, ready to post | _(paste)_ | _(paste)_ |
-| X / Twitter | drafted, ready to post | _(paste)_ | _(paste)_ |
-| Product Hunt (optional 4th) | drafted, ready to post | _(paste)_ | _(paste)_ |
+| X / Twitter | ✅ **POSTED** | <https://x.com/withbowis/status/2075305783382716695> | 2026-07-10 |
+| Product Hunt | ✅ **POSTED** | <https://www.producthunt.com/products/meeting-cost-tickers> | 2026-07-10 |
+| Hacker News — Show HN | ⛔ **blocked** — Show HN temporarily restricted for new/unfamiliar accounts (site influx); build HN standing first, then post an occasional Show HN | — | — |
+| Reddit — r/SideProject | ⛔ **removed** by Reddit's spam filter (new account); retry from an aged account or after karma | — | — |
 
 > Live URL for every post: <https://bobobowis.github.io/meeting-cost-ticker/>
 
@@ -141,8 +141,8 @@ Director / Growth to post. Log the live link + date in the table as each goes up
 
 **Measurement window**
 
-- **Start:** 2026-07-09 (analytics live since LAB-7; window opens with the
-  distribution push).
+- **Start:** 2026-07-09 (analytics live since LAB-7). Distribution push went live
+  2026-07-10 (within ~1 day of start → window not re-anchored).
 - **End / decision review:** **2026-07-23** (2 weeks).
 - Measurement is **passive** — Umami collects automatically. Do **not** poll.
   At 2026-07-23, run the numbers against the Success/Kill criteria above and
