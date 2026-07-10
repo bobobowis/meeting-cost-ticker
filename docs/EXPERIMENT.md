@@ -150,6 +150,37 @@ Director / Growth to post. Log the live link + date in the table as each goes up
 - If the distribution push slips more than ~1 day past the start date,
   re-anchor start = first-post date and end = start + 14 days.
 
+## Phase 0 monetization test (LAB-9, board-approved 2026-07-09)
+
+Cheap willingness-to-pay probe, run **inside** the existing 07-09 → 07-23 window.
+No backend, no paid infra, no design spend — reuses the live `track()` pipe.
+
+**Shipped in-app:**
+
+- **Fake-door "Meeting Cost for Teams →"** CTA. Opening the panel fires
+  `track("pricing_click", { tier: "teams" })`; the "I'd use this →" button fires
+  `pricing_click` with `intent: "notify"` and opens a prefilled GitHub **waitlist**
+  issue (zero-account for the studio, honest raise-your-hand path). Demand is
+  measured by the event regardless of whether the issue is filed.
+- **Tip jar** — "☕ Buy me a coffee" → GitHub Sponsors (`/sponsors/bobobowis`),
+  fires `track("tip_click")`. Passive baseline revenue signal.
+- Both links are swappable constants (`TEAMS_WAITLIST_URL`, `TIP_URL`) at the top
+  of `src/App.tsx` — point them at a real inbox / sponsor page without code logic
+  changes. EN/ES localized.
+
+**Instrumented events (added):**
+
+- `pricing_click` — Teams fake-door engaged (props: `tier`, optional `intent`, `lang`).
+- `tip_click` — tip jar pressed (props: `lang`).
+
+**Monetization greenlight thresholds** (evaluate at 2026-07-23 alongside the
+main Success/Kill criteria). Greenlight building a paid tier if **either**:
+
+- ≥ **5%** of unique visitors fire `pricing_click` (paid-tier interest), **OR**
+- ≥ **3** waitlist issues **OR** ≥ **1** tip / sponsor.
+
+Below both → no paid tier; keep it a free utility (or kill per the main criteria).
+
 ## Decision log
 
 Advance / iterate / kill decision (with numbers) → [`docs/DECISIONS.md`](./DECISIONS.md).
