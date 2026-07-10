@@ -19,6 +19,21 @@ import {
 /** Persist the last-used inputs so a returning user picks up where they left. */
 const STORE_KEY = "mct.inputs.v2";
 
+/**
+ * Phase 0 monetization test (LAB-9, board-approved 2026-07-09). Zero backend:
+ * the `pricing_click` / `tip_click` events are the willingness-to-pay signal;
+ * the links are honest "raise your hand" paths. Swap these two constants to
+ * point at a real inbox / sponsor page without touching component logic.
+ */
+const TEAMS_WAITLIST_URL =
+  "https://github.com/bobobowis/meeting-cost-ticker/issues/new?labels=waitlist&title=" +
+  encodeURIComponent("Interested in Meeting Cost Ticker for Teams") +
+  "&body=" +
+  encodeURIComponent(
+    "I'd use a Teams version (shared dashboards / SSO / per-team cost history).\n\nWhat I'd want: \nTeam size: ",
+  );
+const TIP_URL = "https://github.com/sponsors/bobobowis";
+
 interface Inputs {
   headcount: number;
   salary: number;
@@ -62,6 +77,7 @@ export default function App() {
   const [running, setRunning] = useState(false);
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [teamsOpen, setTeamsOpen] = useState(false);
 
   const t = T[inputs.lang];
   const locale = LOCALE[inputs.lang];
@@ -162,6 +178,20 @@ export default function App() {
       return;
     }
     window.open(links[channel], "_blank", "noopener,noreferrer");
+  };
+
+  // Phase 0 fake-door: opening the panel is the primary paid-demand signal.
+  const openTeams = () => {
+    if (!teamsOpen) track("pricing_click", { tier: "teams", lang: inputs.lang });
+    setTeamsOpen((o) => !o);
+  };
+  const teamsNotify = () => {
+    track("pricing_click", { tier: "teams", intent: "notify", lang: inputs.lang });
+    window.open(TEAMS_WAITLIST_URL, "_blank", "noopener,noreferrer");
+  };
+  const tip = () => {
+    track("tip_click", { lang: inputs.lang });
+    window.open(TIP_URL, "_blank", "noopener,noreferrer");
   };
 
   const num = (v: string) => Math.max(0, Number(v.replace(/[^0-9.]/g, "")) || 0);
@@ -278,6 +308,28 @@ export default function App() {
             {copied ? t.copied : t.copy}
           </button>
         </div>
+      </section>
+
+      <section className="upsell">
+        <button
+          type="button"
+          className="teams-cta"
+          onClick={openTeams}
+          aria-expanded={teamsOpen}
+        >
+          {t.teamsCta}
+        </button>
+        {teamsOpen && (
+          <div className="teams-panel">
+            <p>{t.teamsBlurb}</p>
+            <button type="button" className="btn primary" onClick={teamsNotify}>
+              {t.teamsNotify}
+            </button>
+          </div>
+        )}
+        <button type="button" className="tip" onClick={tip}>
+          {t.tipCta}
+        </button>
       </section>
 
       <section className="inputs">

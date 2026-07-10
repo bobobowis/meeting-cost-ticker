@@ -252,6 +252,61 @@ body {
   text-transform: lowercase;
 }
 
+/* --- Upsell: Phase 0 monetization test (fake-door + tip jar) --- */
+.upsell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--line);
+}
+.teams-cta {
+  align-self: flex-start;
+  background: transparent;
+  border: 1px solid var(--ember);
+  color: var(--ember-2);
+  border-radius: 10px;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.teams-cta:hover {
+  background: rgba(255, 122, 26, 0.08);
+}
+.teams-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+}
+.teams-panel p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.teams-panel .btn.primary {
+  align-self: flex-start;
+  flex: 0 0 auto;
+}
+.tip {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0;
+}
+.tip:hover {
+  color: var(--ember-2);
+}
+
 /* --- Select (region presets) --- */
 .field select {
   padding: 0.7rem 0.85rem;

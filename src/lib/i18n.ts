@@ -61,6 +61,11 @@ export const T = {
     credit: "A 00-lab experiment.",
     shareText: (money: string, people: number, clock: string) =>
       `This meeting has already burned ${money} (${people} people, ${clock}). Was it worth it? → Meeting Cost Ticker`,
+    teamsCta: "Meeting Cost for Teams →",
+    teamsBlurb:
+      "Shared dashboards, SSO, and per-team cost history for whole orgs. Not built yet — want it?",
+    teamsNotify: "I'd use this →",
+    tipCta: "☕ Buy me a coffee",
   },
   es: {
     tagline: "Mira cómo arde el dinero en tiempo real.",
@@ -84,5 +89,10 @@ export const T = {
     credit: "Un experimento de 00-lab.",
     shareText: (money: string, people: number, clock: string) =>
       `Esta reunión ya ha quemado ${money} (${people} personas, ${clock}). ¿Valió la pena? → Meeting Cost Ticker`,
+    teamsCta: "Coste de reuniones para Equipos →",
+    teamsBlurb:
+      "Paneles compartidos, SSO e histórico de coste por equipo para toda la organización. Aún no existe — ¿lo quieres?",
+    teamsNotify: "Lo usaría →",
+    tipCta: "☕ Invítame a un café",
   },
 } satisfies Record<Lang, unknown>;
